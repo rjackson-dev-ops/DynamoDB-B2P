@@ -1,0 +1,7 @@
+   86  awv dynamodb list-tables
+   87  awv dynamodb ?
+   88  aws dynamodb describe-table --table-name weatherstation_data
+   89  awv dynamodb describe-table --table-name weatherstation_data
+   90  history
+   91  aws dynamodb create-table --generate-cli-skeleton  >> dynamodb_create_table_skeleton.txt
+   92  cat dynamodb_create_table_skeleton.txt
