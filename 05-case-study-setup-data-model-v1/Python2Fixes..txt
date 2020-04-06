@@ -1,0 +1,23 @@
+1) Have to use python 2.
+
+Hadd build issue on mac.
+
+2) Faker Issue:
+
+ImportError: The ``fake-factory`` package is now called ``Faker``.
+
+I had the same problem.
+
+As the ImportError implies, you need to install Faker for this.
+
+Move the directory in which your python library is installed and try this..
+
+First uninstall fake-factory (I use pip) pip uninstall fake-factory
+
+Then check if it is uninstalled using pip freeze and it should not be there
+
+Then, proceed with installing Faker by pip install Faker
+
+Now, try running that code again, it should work. Hope this helps :)
+
+3) Added sleep in item gen because I was exceeding the throughput with batch write.
