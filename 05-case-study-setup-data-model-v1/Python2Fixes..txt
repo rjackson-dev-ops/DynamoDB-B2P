@@ -2,6 +2,13 @@
 
 Hadd build issue on mac.
 
+https://github.com/pyenv/pyenv/wiki/common-build-problems
+
+had to use:
+
+ CFLAGS="-I$(xcrun --show-sdk-path)/usr/include" pyenv install 2.7.15
+ 
+
 2) Faker Issue:
 
 ImportError: The ``fake-factory`` package is now called ``Faker``.
