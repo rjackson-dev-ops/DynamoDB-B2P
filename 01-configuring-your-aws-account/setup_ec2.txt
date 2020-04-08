@@ -28,3 +28,15 @@ cd
 
 cd dot-files
 # ./setup.sh
+
+Fixing EC2 instance
+
+Faker issues
+
+1) pip install --upgrade pip
+2) Login again
+3) pip install Faker
+
+AWS issues
+
+pip install --upgrade --user awscli
