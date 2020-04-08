@@ -118,7 +118,7 @@ def item_gen(Type, Counter, Idbucket, db_r, s3_c): # Generate ITEM for type
 #------------------------------------------------------------------------------
 def worker_process(num_to_process, threadno, s3bucket):
     # establish a set of DDB connections per thread
-    loadmin_session = boto3.Session(profile_name='loadmin')
+    loadmin_session = boto3.Session()
     # we can pass these into the function invokes to ensure we're thread safe
     db_c = loadmin_session.client('dynamodb')
     db_r = loadmin_session.resource('dynamodb')

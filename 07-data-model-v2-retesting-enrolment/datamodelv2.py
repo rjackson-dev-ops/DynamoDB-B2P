@@ -26,7 +26,7 @@ py3 = version_info[0] > 2 #creates boolean value for test that Python major vers
 import uuid
 
 # Boto init
-loadmin_session = boto3.Session(profile_name='loadmin')
+loadmin_session = boto3.Session()
 db_c = loadmin_session.client('dynamodb')
 db_r = loadmin_session.resource('dynamodb')
 s3_c = loadmin_session.client('s3')

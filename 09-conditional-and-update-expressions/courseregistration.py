@@ -13,7 +13,7 @@ fake = Factory.create()
 py3 = version_info[0] > 2 #creates boolean value for test that Python major version > 2
 import uuid
 
-loadmin_session = boto3.Session(profile_name='loadmin')
+loadmin_session = boto3.Session()
 db_c = loadmin_session.client('dynamodb')
 db_r = loadmin_session.resource('dynamodb')
 

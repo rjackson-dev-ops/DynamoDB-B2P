@@ -9,7 +9,7 @@ from faker import Factory
 from time import sleep
 fake = Factory.create()
 
-loadmin_session = boto3.Session(profile_name='loadmin')
+loadmin_session = boto3.Session()
 db_c = loadmin_session.client('dynamodb')
 db_r = loadmin_session.resource('dynamodb')
 

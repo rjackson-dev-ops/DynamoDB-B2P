@@ -3,7 +3,7 @@ from tqdm import trange
 from time import sleep, gmtime, strftime
 from sys import version_info
 py3 = version_info[0] > 2
-loadmin_session = boto3.Session(profile_name='loadmin')
+loadmin_session = boto3.Session()
 db_r = loadmin_session.resource('dynamodb')
 
 ## PREREQS - images/ folder in same directory as this scripts
