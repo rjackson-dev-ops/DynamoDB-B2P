@@ -272,6 +272,35 @@ Resources:
     Metadata:
       'AWS::CloudFormation::Designer':
         id: 2e76192b-a4f8-48a5-92b6-abbfa8b83263
+
+  Role:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: 'Allow'
+            Principal:
+              Service:
+                - 'ec2.amazonaws.com'
+            Action:
+              - 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/AWSLambdaFullAccess'
+        - 'arn:aws:iam::aws:policy/AmazonAPIGatewayAdministrator'
+        - 'arn:aws:iam::aws:policy/AmazonAPIGatewayInvokeFullAccess'
+        - 'arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess'
+        - 'arn:aws:iam::aws:policy/AmazonS3FullAccess'
+        - 'arn:aws:iam::aws:policy/CloudWatchFullAccess'
+
+
+  InstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Roles:
+        - !Ref Role
+
+
   EC2ServerInstance:
     Type: 'AWS::EC2::Instance'
     Metadata:
@@ -295,6 +324,7 @@ Resources:
               command: 'chmod 755  /home/ec2-user/DynamoDB-B2P-master -R'
     Properties:
       InstanceType: !Ref InstanceType
+      IamInstanceProfile: !Ref InstanceProfile
       ImageId: !FindInMap 
         - AWSRegionArch2AMI
         - !Ref 'AWS::Region'
@@ -319,6 +349,7 @@ Resources:
           pip install boto3
           pip install tqdm
           pip install multiprocessing
+          pip install --upgrade --user awscli
           /opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource EC2ServerInstance --region ${AWS::Region}
           /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource EC2ServerInstance --region ${AWS::Region}
     CreationPolicy:
