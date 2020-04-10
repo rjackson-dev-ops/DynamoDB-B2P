@@ -1,0 +1,8 @@
+arn:aws:dynamodb:us-east-1:489823802355:table/lo_courses
+arn:aws:dynamodb:us-east-1:489823802355:table/lo_students
+
+
+arn:aws:iam::489823802355:user/lostaff1
+
+arn:aws:iam::489823802355:user/lostudent251
+
