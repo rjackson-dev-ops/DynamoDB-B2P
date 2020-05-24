@@ -5,3 +5,12 @@ aws dynamodb describe-table --table-name weatherstation_data
 history
 aws dynamodb create-table --generate-cli-skeleton  >> dynamodb_create_table_skeleton.txt
 cat dynamodb_create_table_skeleton.txt
+
+
+aws dynamodb delete-table --table-name lo_counters
+
+aws cloudformation create-stack --stack-name  sns-topic-for-streams \
+    --template-body file://snstopic.json \
+    --parameters ParameterKey=EmailAddr,ParameterValue=robert.jackson@stelligent.com
+    
+
