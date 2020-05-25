@@ -5,17 +5,17 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script type="text/javascript">
   var creds = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: 'CHANGEME-IDPOOL'
+    IdentityPoolId: 'us-east-1:4e5c64e6-88aa-4bbf-b9cf-72185e9939cc'
   })
   AWS.config.update({
-    region: 'CHANGEME-REGION',
+    region: 'us-east-1',
     credentials: creds
   });
 </script>
 <head>
   <link href='http://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
-  <meta name="google-signin-client_id" content="CHANGEME-GOOGLECLIENTID">
+  <meta name="google-signin-client_id" content="501849928037-3aiv8l3e7bmhfseo2lmls5sbhgases1q.apps.googleusercontent.com">
   <style>
     h1 {font: 400 60px/1.5 'Playfair Display', Georgia, serif;}
     p {font: 400 16px/1.6 'Muli', Verdana, Helvetica, sans-serif;}

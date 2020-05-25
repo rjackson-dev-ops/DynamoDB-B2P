@@ -14,3 +14,55 @@ aws cloudformation create-stack --stack-name  sns-topic-for-streams \
     --parameters ParameterKey=EmailAddr,ParameterValue=robert.jackson@stelligent.com
     
 
+aws cloudformation create-stack --stack-name  lecturer-performance-lambda-trigger \
+    --template-body file://teacherperformancetrigger.json \
+    --parameters ParameterKey=SNSTopicArn,ParameterValue=arn:aws:sns:us-east-1:489823802355:sns-topic-for-streams-SNS-1PNHQ8RHTHWUY \
+    ParameterKey=EXAMStreamARN,ParameterValue=arn:aws:dynamodb:us-east-1:489823802355:table/lo_exams/stream/2020-05-24T20:13:21.781 \
+    --capabilities CAPABILITY_IAM
+    
+
+aws cloudformation create-stack --stack-name  altered-grades-lambda-trigger \
+    --template-body file://gradechangetrigger.json \
+    --parameters ParameterKey=SNSTopicArn,ParameterValue=arn:aws:sns:us-east-1:489823802355:sns-topic-for-streams-SNS-1PNHQ8RHTHWUY \
+    ParameterKey=EXAMStreamARN,ParameterValue=arn:aws:dynamodb:us-east-1:489823802355:table/lo_exams/stream/2020-05-24T20:13:21.781 \
+    --capabilities CAPABILITY_IAM
+    
+aws cloudformation create-stack --stack-name  exam-dashboard \
+    --template-body file://examdashtrigger.json \
+    --parameters ParameterKey=ExamsStreamARN,ParameterValue=arn:aws:dynamodb:us-east-1:489823802355:table/lo_exams/stream/2020-05-24T20:13:21.781 \
+    --capabilities CAPABILITY_IAM
+    
+aws cloudformation create-stack --stack-name  federated-demo-stack \
+    --template-body file://federationdemo.json \
+    --capabilities CAPABILITY_IAM
+
+
+
+How to use S3 bucket for javscript site authorized through Cognito
+
+0) Create S3 Public access bucket
+
+1) Create Google application project in single signon website
+
+- navigate to:
+
+https://developers.google.com/identity/sign-in/web/devconsole-project
+
+Really just need to create a project  and go to:
+
+API Credentials and create credentials.
+
+2) Go to cognito and create an identify pool
+
+Note identify pool identify
+
+3) Add Dynamob Policies to Cognito Roles
+
+4) Add Google Client ID (client secret) as authentication provider
+
+5)  Go to html fiel and Add
+- google secret key/id
+- cognito pool id
+- aws region
+
+

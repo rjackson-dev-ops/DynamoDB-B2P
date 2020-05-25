@@ -12,7 +12,7 @@
         "dynamodb:Scan"
       ],
       "Resource": [
-        "COURSESTABLEARN"
+        "arn:aws:dynamodb:us-east-1:489823802355:table/lo_courses"
       ]
     }
   ]
